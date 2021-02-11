@@ -792,6 +792,7 @@ Site logo
 /*added borders and drop shadows to testimonial boxes*/
 #testimonial_section {
   .widget_bttk_testimonial_widget {
+    padding: 0 10px;
     .bttk-testimonial-holder {
       border-radius: 0;
       box-shadow: unset;
@@ -801,15 +802,7 @@ Site logo
       border-style: solid;
       border-color: #E8E8E8;
       border-radius: 0px;
-      .bttk-testimonial-inner-holder {
-        display: flex;
-        flex-wrap: wrap;
-        text-align: left;
-        justify-content: space-around;
-        align-items: center;
-        padding: 5px 10px;
-      }
-      .bttk-testimonial-inner-holder::before {
+      &::before {
         content: "";
         z-index: -1;
         position: absolute;
@@ -817,11 +810,12 @@ Site logo
         top: 160px;
         bottom: 15px;
         left: 10px;
+        height: unset;
         transform: rotate(-3deg);
         -webkit-transform: rotate(-3deg);
         box-shadow: 0px 15px 10px #777777;
       }
-      .bttk-testimonial-inner-holder::after {
+      &::after {
         content: "";
         z-index: -1;
         position: absolute;
@@ -833,8 +827,70 @@ Site logo
         -webkit-transform: rotate(3deg);
         box-shadow: 0px 15px 10px #777777;
       }
+      .testimonial-content { color: #fff;}
+      .bttk-testimonial-inner-holder {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: left;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px 10px 5px 13px;
+        position: relative;
+        margin-bottom: 40px;
+        .testimonial-meta {
+          background-color: #fff;
+          border-width: 1px;
+          border-style: solid;
+          bottom: -20px;
+          padding-left: 20px;
+          position: absolute;
+          right: -1px;
+          width: calc(100% + 10px);
+          &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            border-style: solid;
+            border-color: #ccc transparent transparent transparent;
+            bottom: calc(-1em - 1px);
+            left:0;
+          }
+          &::before {
+            left: 0;
+            border-width: 1em 0 0 7px;
+          }
+        }
+      }
     }
   }
+  .widget_bttk_testimonial_widget:nth-child(3n-2) {
+    .bttk-testimonial-holder {
+      background-color: #a2785d;
+      border-color: #a2785d;
+      .testimonial-meta {
+        border-color: #a2785d;
+      }
+    }
+  }
+  .widget_bttk_testimonial_widget:nth-child(3n-1) {
+    .bttk-testimonial-holder {
+      background-color: #ab8984;
+      border-color: #ab8984;
+      .testimonial-meta {
+        border-color: #ab8984;
+      }
+    }
+  }
+  .widget_bttk_testimonial_widget:nth-child(3n-3) {
+    .bttk-testimonial-holder {
+      background-color: #85C0A4;
+      border-color: #85C0A4;
+      .testimonial-meta {
+        border-color: #85C0A4;
+      }
+    }
+  }
+
 }
 .widget_bttk_testimonial_widget .img-holder {
   flex-grow: 0;
@@ -865,15 +921,15 @@ Site logo
 .widget_bttk_testimonial_widget .text-holder .testimonial-content {
   line-height: 1.4;
 }
-.widget_bttk_testimonial_widget .bttk-testimonial-holder:before {
+.widget_bttk_testimonial_widget .bttk-testimonial-inner-holder:before {
   content: "";
-  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 30.047"><defs><style>.cls-1 {fill: rgba(106,190,131,0.1);}</style></defs><path id="noun_Quote_89663_000000" class="cls-1" d="M5.129,40.776a9.664,9.664,0,0,1,9.121-8.161C13.13,28.455,10.41,26.8,7.1,25.841a.387.387,0,0,1-.267-.427l.533-3.307s.053-.267.48-.213C19.264,23.174,27,31.868,25.558,42.43c-1.333,7.308-7.041,10.135-12.322,9.388A9.726,9.726,0,0,1,5.129,40.776ZM41.56,32.615c-1.067-4.161-3.894-5.814-7.148-6.774a.387.387,0,0,1-.267-.427l.48-3.307s.053-.267.48-.213c11.415,1.227,19.1,9.921,17.762,20.483-1.387,7.361-7.148,10.188-12.375,9.441a9.649,9.649,0,0,1-8.054-11.041A9.52,9.52,0,0,1,41.56,32.615Z" transform="translate(-5.018 -21.887)"/></svg>');
+  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 30.047"><defs><style>.cls-1 {fill: rgba(204,204,204,.5);}</style></defs><path id="noun_Quote_89663_000000" class="cls-1" d="M5.129,40.776a9.664,9.664,0,0,1,9.121-8.161C13.13,28.455,10.41,26.8,7.1,25.841a.387.387,0,0,1-.267-.427l.533-3.307s.053-.267.48-.213C19.264,23.174,27,31.868,25.558,42.43c-1.333,7.308-7.041,10.135-12.322,9.388A9.726,9.726,0,0,1,5.129,40.776ZM41.56,32.615c-1.067-4.161-3.894-5.814-7.148-6.774a.387.387,0,0,1-.267-.427l.48-3.307s.053-.267.48-.213c11.415,1.227,19.1,9.921,17.762,20.483-1.387,7.361-7.148,10.188-12.375,9.441a9.649,9.649,0,0,1-8.054-11.041A9.52,9.52,0,0,1,41.56,32.615Z" transform="translate(-5.018 -21.887)"/></svg>');
   background-repeat: no-repeat;
   width: 48px;
   height: 30px;
   position: absolute;
-  bottom: 42px;
-  right: 0;
+  bottom: 22px;
+  right: 10px;
   top: unset;
   left: unset;
 }
