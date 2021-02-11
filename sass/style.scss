@@ -706,9 +706,6 @@ section.service-section{
   padding-top: 50px;
   margin-bottom: 0;
 }
-section.service-section .widget_bttk_icon_text_widget{
-  position: relative;
-}
 section.service-section .widget_bttk_icon_text_widget:before{
   content: '';
   background: #E6E6E6;
@@ -767,8 +764,43 @@ section[class*="-section"] .widget_bttk_icon_text_widget a.btn-readmore:hover {
   margin: 0 auto;
   text-align: center;
 }
-.widget_bttk_icon_text_widget .icon-holder svg{
-  color: #6ABE83
+#service_section {
+  .wrapper {
+    .widget_bttk_icon_text_widget {
+      position: relative;
+      .widget-title {
+        color: #a2785d;
+      }
+    }
+    section:nth-child(2) {
+      .icon-holder {
+        svg {
+          color: #CCC;
+        }
+      }
+    }
+    section:nth-child(3) {
+      .icon-holder {
+        svg {
+          color: #A2785D;
+        }
+      }
+    }
+    section:nth-child(5) {
+      .icon-holder {
+        svg {
+          color: #AB8984;
+        }
+      }
+    }
+    section:nth-child(6) {
+      .icon-holder {
+        svg {
+          color: #85C0A4;
+        }
+      }
+    }
+  }
 }
 .widget_bttk_icon_text_widget .rtc-itw-inner-holder .text-holder {
   text-align: center;
@@ -783,6 +815,12 @@ site header
 /**
 Site logo
 **/
+
+.site-logo {
+  img {
+    max-width: 250px;
+  }
+}
 
 /** Testimonial Section */
 .bttk-testimonial-holder .name{
@@ -1089,9 +1127,9 @@ section.service-section .widget_bttk_icon_text_widget::before, section.service-s
   grid-template-rows: 0.4fr 1.3fr 1.3fr;
   gap: 10px 10px;
   grid-template-areas:
-    "services-header services-header services-header"
-    "text-block-1 image text-block-3"
-    "text-block-2 image text-block-4";
+  "services-header services-header services-header"
+  "text-block-1 image text-block-3"
+  "text-block-2 image text-block-4";
 }
 
 .service-section {
@@ -1193,6 +1231,4 @@ section.service-section .widget_bttk_icon_text_widget::before, section.service-s
   }
 }
 
-@media screen and (max-width: 540px) {
-
-}
+@media screen and (max-width: 540px) {}
