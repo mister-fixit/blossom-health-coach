@@ -562,3 +562,7 @@ function wpse_mime_types_webp( $mimes ) {
 
   return $mimes;
 }
+add_action( 'after_setup_theme', 'bkw_theme_setup' );
+function bkw_theme_setup() {
+    add_image_size( 'flow-logo-thumb', 360 ); // 300 pixels wide (and unlimited height)
+}
