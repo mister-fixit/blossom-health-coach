@@ -96,7 +96,7 @@ section[class*="-section"] .widget_bttk_icon_text_widget a.btn-readmore:hover:af
 .header-search button:hover,
 .widget_btif_instagram_widget .profile-link,
 .widget_btif_instagram_widget .profile-link:hover{
-  background: #6ABE83;
+  background: #CCC;
 }
 .widget_btif_instagram_widget .profile-link:hover {
   opacity: 0.8;
@@ -903,28 +903,28 @@ Site logo
   }
   .widget_bttk_testimonial_widget:nth-child(3n-2) {
     .bttk-testimonial-holder {
-      background-color: #a2785d;
-      border-color: #a2785d;
+      background-color: #e3a983;
+      border-color: #e3a983;
       .testimonial-meta {
-        border-color: #a2785d;
+        border-color: #e3a983;
       }
     }
   }
   .widget_bttk_testimonial_widget:nth-child(3n-1) {
     .bttk-testimonial-holder {
-      background-color: #ab8984;
-      border-color: #ab8984;
+      background-color: #f6c4bd;
+      border-color: #f6c4bd;
       .testimonial-meta {
-        border-color: #ab8984;
+        border-color: #f6c4bd;
       }
     }
   }
   .widget_bttk_testimonial_widget:nth-child(3n-3) {
     .bttk-testimonial-holder {
-      background-color: #85C0A4;
-      border-color: #85C0A4;
+      background-color: #91c6ac;
+      border-color: #91c6ac;
       .testimonial-meta {
-        border-color: #85C0A4;
+        border-color: #91c6ac;
       }
     }
   }
@@ -961,7 +961,7 @@ Site logo
 }
 .widget_bttk_testimonial_widget .bttk-testimonial-inner-holder:before {
   content: "";
-  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 30.047"><defs><style>.cls-1 {fill: rgba(204,204,204,.5);}</style></defs><path id="noun_Quote_89663_000000" class="cls-1" d="M5.129,40.776a9.664,9.664,0,0,1,9.121-8.161C13.13,28.455,10.41,26.8,7.1,25.841a.387.387,0,0,1-.267-.427l.533-3.307s.053-.267.48-.213C19.264,23.174,27,31.868,25.558,42.43c-1.333,7.308-7.041,10.135-12.322,9.388A9.726,9.726,0,0,1,5.129,40.776ZM41.56,32.615c-1.067-4.161-3.894-5.814-7.148-6.774a.387.387,0,0,1-.267-.427l.48-3.307s.053-.267.48-.213c11.415,1.227,19.1,9.921,17.762,20.483-1.387,7.361-7.148,10.188-12.375,9.441a9.649,9.649,0,0,1-8.054-11.041A9.52,9.52,0,0,1,41.56,32.615Z" transform="translate(-5.018 -21.887)"/></svg>');
+  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 30.047"><defs><style>.cls-1 {fill: rgba(204,204,204,.7);}</style></defs><path id="noun_Quote_89663_000000" class="cls-1" d="M5.129,40.776a9.664,9.664,0,0,1,9.121-8.161C13.13,28.455,10.41,26.8,7.1,25.841a.387.387,0,0,1-.267-.427l.533-3.307s.053-.267.48-.213C19.264,23.174,27,31.868,25.558,42.43c-1.333,7.308-7.041,10.135-12.322,9.388A9.726,9.726,0,0,1,5.129,40.776ZM41.56,32.615c-1.067-4.161-3.894-5.814-7.148-6.774a.387.387,0,0,1-.267-.427l.48-3.307s.053-.267.48-.213c11.415,1.227,19.1,9.921,17.762,20.483-1.387,7.361-7.148,10.188-12.375,9.441a9.649,9.649,0,0,1-8.054-11.041A9.52,9.52,0,0,1,41.56,32.615Z" transform="translate(-5.018 -21.887)"/></svg>');
   background-repeat: no-repeat;
   width: 48px;
   height: 30px;
