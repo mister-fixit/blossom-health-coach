@@ -36,6 +36,8 @@
     do_action( 'blossom_coach_after_footer' );
 
     wp_footer();
+    ?>
+<?php
 if ( is_front_page() ) {
     ?>
 <script type="text/javascript">
@@ -69,6 +71,13 @@ if ( is_front_page() ) {
 <?php
 }
 ?>
-
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('.new-toggle-button').click(function() {
+            $(this).toggleClass('active');
+            $('.primary-menu-list').toggleClass('active');
+        });
+    });
+</script>
 </body>
 </html>

@@ -1,7 +1,133 @@
 <?php
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
+function blossom_coach_setup() {
+    /*
+     * Make theme available for translation.
+     * Translations can be filed in the /languages/ directory.
+     * If you're building a theme based on Blossom Coach, use a find and replace
+     * to change 'blossom-coach' to the name of your theme in all the template files.
+     */
+    load_theme_textdomain( 'blossom-coach', get_template_directory() . '/languages' );
 
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support( 'automatic-feed-links' );
+
+    /*
+     * Let WordPress manage the document title.
+     * By adding theme support, we declare that this theme does not use a
+     * hard-coded <title> tag in the document head, and expect WordPress to
+     * provide it for us.
+     */
+    add_theme_support( 'title-tag' );
+
+    /*
+     * Enable support for Post Thumbnails on posts and pages.
+     *
+     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+     */
+    add_theme_support( 'post-thumbnails' );
+
+    // This theme uses wp_nav_menu() in one location.
+    register_nav_menus( array(
+        'primary' => esc_html__( 'Primary', 'blossom-coach' ),
+    ) );
+
+    /*
+     * Switch default core markup for search form, comment form, and comments
+     * to output valid HTML5.
+     */
+    add_theme_support( 'html5', array(
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+    ) );
+
+    // Set up the WordPress core custom background feature.
+    add_theme_support( 'custom-background', apply_filters( 'blossom_coach_custom_background_args', array(
+        'default-color' => 'ffffff',
+        'default-image' => '',
+    ) ) );
+
+    // Add theme support for selective refresh for widgets.
+    add_theme_support( 'customize-selective-refresh-widgets' );
+
+    /**
+     * Add support for core custom logo.
+     *
+     * @link https://codex.wordpress.org/Theme_Logo
+     */
+    add_theme_support( 'custom-logo', array(
+        'height'      => 70,
+        'width'       => 70,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description'
+        ) ) );
+
+    /**
+     * Add support for custom header.
+     */
+    add_theme_support( 'custom-header', apply_filters( 'blossom_coach_custom_header_args', array(
+        'default-image'  => esc_url( get_template_directory_uri() . '/images/banner-img.jpg' ),
+        'video'          => true,
+        'header-text'    => false,
+    ) ) );
+
+    register_default_headers( array(
+        'default-image' => array(
+            'url'           => '%s/images/banner-img.jpg',
+            'thumbnail_url' => '%s/images/banner-img.jpg',
+            'description'   => __( 'Default Header Image', 'blossom-coach' ),
+        ),
+    ) );
+
+    /**
+     * Add Custom Images sizes.
+     */
+    add_image_size( 'blossom-coach-schema', 600, 60 );
+    add_image_size( 'blossom-coach-slider', 1920, 700, true );
+    add_image_size( 'blossom-coach-fullwidth', 1170, 578, true );
+    add_image_size( 'blossom-coach-with-sidebar', 810, 500, true );
+    add_image_size( 'blossom-coach-latest', 540, 400, true );
+
+    /** Starter Content */
+    $starter_content = array(
+        // Specify the core-defined pages to create and add custom thumbnails to some of them.
+        'posts' => array( 'home', 'blog' ),
+
+        // Default to a static front page and assign the front and posts pages.
+        'options' => array(
+            'show_on_front' => 'page',
+            'page_on_front' => '{{home}}',
+            'page_for_posts' => '{{blog}}',
+        ),
+
+        // Set up nav menus for each of the two areas registered in the theme.
+        'nav_menus' => array(
+            // Assign a menu to the "top" location.
+            'primary' => array(
+                'name' => __( 'Primary', 'blossom-coach' ),
+                'items' => array(
+                    'page_home',
+                    'page_blog'
+                )
+            )
+        ),
+    );
+
+    $starter_content = apply_filters( 'travel_agency_starter_content', $starter_content );
+
+    add_theme_support( 'starter-content', $starter_content );
+
+    // Add theme support for Responsive Videos.
+    add_theme_support( 'jetpack-responsive-videos' );
+
+    // Add theme support for excerpt
+    add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'after_setup_theme', 'blossom_coach_setup' );
 /**
  *	After theme Setup Hook
  */
@@ -32,7 +158,9 @@ add_action('wp_print_scripts', 'mfi_disable_scripts_styles', 100);
 /**
  * Enqueue scripts and styles.
  */
+
 function blossom_health_coach_scripts() {
+    wp_dequeue_script('blossom-coach-modal-js');
 	if( blossom_coach_is_woocommerce_activated() ){
         $dependencies = array( 'blossom-coach-woocommerce', 'owl-carousel', 'animate', 'blossom-coach-google-fonts' );    
     }else{
@@ -43,7 +171,9 @@ function blossom_health_coach_scripts() {
     if ( is_front_page() ) {
         wp_enqueue_style('slick-style', get_stylesheet_directory_uri() . '/slick/slick.css');
         wp_enqueue_style('slick-theme', get_stylesheet_directory_uri() . '/slick/slick-theme.css');
-        wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/slick/slick.min.js', array(jquery), '1.0.0', true);
+        /*wp_enqueue_style('parallax-theme', get_stylesheet_directory_uri() . '/locomotive/locomotive-scroll.css');*/
+        wp_enqueue_script('slick', get_stylesheet_directory_uri() . '/slick/slick.min.js', array(jquery), '1.0.0', true);
+        wp_enqueue_script('parallax', get_stylesheet_directory_uri() . '/js/parlx.js', array(jquery),'2.0.4', true);
     }
 }
 add_action( 'wp_enqueue_scripts', 'blossom_health_coach_scripts' );
@@ -192,6 +322,22 @@ function blossom_health_coach_customize_register( $wp_customize ){
 		)
 	);
 
+	$wp_customize->add_section( 'top_banner', array(
+        'title'       => __( 'Top Banner' , 'blossom-health-coach' ),
+        'priority'    => 55,
+    ));
+
+    $wp_customize->add_setting( 'top_banner_text' , array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'top_banner_text', array(
+        'label'      => __( 'Top Banner Text', 'blossom-health-coach' ),
+        'section'    => 'top_banner',
+        'settings'   => 'top_banner_text',
+        'type'       => 'text',
+    ) ) );
 }
 add_action( 'customize_register', 'blossom_health_coach_customize_register', 40 );
 
@@ -204,6 +350,16 @@ function blossom_health_coach_remove_header_customize_register() {
     $wp_customize->remove_control( 'email' );   
 } 
 add_action( 'customize_register', 'blossom_health_coach_remove_header_customize_register', 1000 );
+
+function blossom_coach_page_start(){
+    ?>
+    <div class="top-banner-text">
+        <p class="top-banner-wrapper"><?php echo wp_kses_post(get_theme_mod('top_banner_text')); ?></p>
+    </div>
+    <div id="page" class="site"><a aria-label="<?php esc_attr_e( 'skip to content', 'blossom-coach' ) ; ?>" class="skip-link" href="#content"><?php esc_html_e( 'Skip to Content', 'blossom-coach' ); ?></a>
+    <?php
+}
+add_action( 'blossom_coach_before_header', 'blossom_coach_page_start', 20 );
 
 function blossom_health_coach_site_branding() {
 	$site_title       = get_bloginfo( 'name' );
@@ -282,13 +438,12 @@ function blossom_coach_header(){
 			<div class="wrapper">
 				<div class="menu-wrap">
 					<nav id="site-navigation" class="main-navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-                        <button type="button" class="toggle-button" data-toggle-target=".main-menu-modal" data-toggle-body-class="showing-main-menu-modal" aria-expanded="false" data-set-focus=".close-main-nav-toggle">
+                        <button type="button" class="new-toggle-button" aria-expanded="false">
                             <span class="toggle-bar"></span>
                             <span class="toggle-bar"></span>
                             <span class="toggle-bar"></span>
                         </button>
-                        <div class="primary-menu-list main-menu-modal cover-modal" data-modal-target-string=".main-menu-modal">
-                            <button class="close close-main-nav-toggle" data-toggle-target=".main-menu-modal" data-toggle-body-class="showing-main-menu-modal" aria-expanded="false" data-set-focus=".main-menu-modal"><span></span></button>
+                        <div class="primary-menu-list">
                             <div class="mobile-menu" aria-label="<?php esc_attr_e( 'Mobile', 'blossom-health-coach' ); ?>">
                                 <?php
                                     wp_nav_menu( array(
@@ -353,7 +508,6 @@ function blossom_health_testimonial_widget( $html, $args, $instance ){
     </div>
 <?php
 }
-
 // Add Customize Script
 function blossom_health_coach_customize_script(){
     wp_enqueue_script( 'blossom-health-coach-customize', get_stylesheet_directory_uri() . '/js/customize.js', array( 'jquery', 'customize-controls', 'blossom-coach-customize' ), '', true );
@@ -370,7 +524,8 @@ function blossom_coach_get_home_sections(){
         'client'      => array( 'sidebar' => 'client' ),
         'blog'        => array( 'section' => 'blog' ),
         'simple-cta'  => array( 'sidebar' => 'simple-cta' ),
-        'contact'     => array( 'sidebar' => 'contact' ), 
+        'contact'     => array( 'sidebar' => 'contact' ),
+        'top-banner'  => array( 'sidebar' => 'top-banner' ),
     );
     
     $enabled_section = array();
@@ -518,6 +673,16 @@ function blossom_health_coach_dynamic_css(){
 function blossom_coach_footer_bottom(){ ?>
 <div class="bottom-footer">
     <div class="wrapper">
+        <div class="header-social">
+            <?php
+            if( blossom_coach_social_links( false ) ){
+                blossom_coach_social_links( true );
+            }
+            ?>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy;<span class="copy-year"><?php echo date("Y"); ?></span> <span class="copy-owner">FLOW</span></p>
+        </div>
     </div>
 </div>
 
@@ -566,3 +731,56 @@ add_action( 'after_setup_theme', 'bkw_theme_setup' );
 function bkw_theme_setup() {
     add_image_size( 'flow-logo-thumb', 360 ); // 300 pixels wide (and unlimited height)
 }
+/**
+ * Content Start
+ */
+function blossom_coach_content_start(){
+    $home_sections = blossom_coach_get_home_sections();
+
+
+
+    if( !( is_front_page() && ! is_home() && $home_sections ) ){ ?>
+        <div id="content" class="site-content">
+        <?php
+        if ( ! is_front_page() && ! is_home() ) blossom_coach_breadcrumb();
+        if( is_archive() || is_search() ){ ?>
+            <header class="page-header">
+                <div class="wrapper">
+                    <?php
+                    if( is_archive() ){
+                        if( is_author() ){ ?>
+                            <div class="author-img"><?php echo get_avatar( get_the_author_meta( 'ID' ), 120 ); ?></div>
+                            <div class="author-content-wrap">
+                                <h1 class="page-title">
+                                    <?php printf( esc_html__( 'All posts by %1$s%2$s%3$s', 'blossom-coach' ), '<span class="vcard">', esc_html( get_the_author_meta( 'display_name' ) ), '</span>' );?>
+                                </h1>
+                            </div>
+                            <?php
+                        }else{
+                            the_archive_title();
+                            the_archive_description( '<div class="archive-description">', '</div>' );
+                        }
+                    }
+
+                    if( is_search() ){
+                        echo '<h1 class="page-title">' . esc_html__( 'You Are Looking For', 'blossom-coach' ) . '</h1>';
+                        get_search_form();
+                    }
+                    ?>
+                </div><!-- .wrapper -->
+            </header><!-- .page-header -->
+            <?php
+        } ?>
+        <div class="wrapper">
+        <?php
+    }
+}
+
+function add_slug_body_class( $classes ) {
+    global $post;
+    if ( isset( $post ) ) {
+        $classes[] = $post->post_type . '-' . $post->post_name;
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'add_slug_body_class' );
