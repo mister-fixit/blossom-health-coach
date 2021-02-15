@@ -795,6 +795,7 @@ site header
   }
 }
 #masthead {
+  margin-top: 15px;
   /** main menu **/
   .header-t {
     border-bottom: none;
@@ -944,12 +945,29 @@ site header
 }
 /** banner section **/
 #banner_section {
-  height: 70vh;
+  height: 100vh;
   .parlx-children {
-    background-position: top center;
+    background-position: 58% 0;
+  }
+  @media screen and (min-height: 720px) and (max-width: 768px) {
+    height: 60vh;
+    .parlx-children {
+      background-position: 58% 50%;
+    }
+  }
+  @media screen and (min-height: 1024px) and (max-width: 1024px) {
+    height: 60vh;
+    .parlx-children {
+      background-position: 75% 0;
+    }
   }
   @media screen and (min-width: 1024px) {
-    height: 100vh;
+    height: 70vh;
+    .parlx-children {
+      background-position: 100% 0;
+    }
+  }
+  @media screen and (min-width: 1200px) {
     .parlx-children {
       background-position: 0 0;
     }

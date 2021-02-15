@@ -42,6 +42,9 @@ if ( is_front_page() ) {
     ?>
 <script type="text/javascript">
     jQuery(document).ready(function($){
+        var viewHt = $(window).height(),
+            viewWd = $(window).width();
+        console.log(viewHt + ' height' + viewWd + 'width');
         $('.testimonial-section .wrapper').slick({
             autoplay: true,
             autoplaySpeed: 2000,
@@ -66,6 +69,19 @@ if ( is_front_page() ) {
                 }
             ]
         });
+        if ( viewWd < 1024 ) {
+            $('.parallax').parlx({
+                settings: {
+                    height: viewHt,
+                },
+            });
+        } else {
+            $('.parallax').parlx({
+                settings: {
+                    height: 700,
+                },
+            });
+        }
     });
 </script>
 <?php

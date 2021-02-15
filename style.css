@@ -747,6 +747,7 @@ site header
   z-index: 1; }
 
 #masthead {
+  margin-top: 15px;
   /** main menu **/ }
   #masthead .header-t {
     border-bottom: none;
@@ -860,14 +861,27 @@ site header
 
 /** banner section **/
 #banner_section {
-  height: 70vh; }
+  height: 100vh; }
   #banner_section .parlx-children {
-    background-position: top center; }
+    background-position: 58% 0; }
+  @media screen and (min-height: 720px) and (max-width: 768px) {
+    #banner_section {
+      height: 60vh; }
+      #banner_section .parlx-children {
+        background-position: 58% 50%; } }
+  @media screen and (min-height: 1024px) and (max-width: 1024px) {
+    #banner_section {
+      height: 60vh; }
+      #banner_section .parlx-children {
+        background-position: 75% 0; } }
   @media screen and (min-width: 1024px) {
     #banner_section {
-      height: 100vh; }
+      height: 70vh; }
       #banner_section .parlx-children {
-        background-position: 0 0; } }
+        background-position: 100% 0; } }
+  @media screen and (min-width: 1200px) {
+    #banner_section .parlx-children {
+      background-position: 0 0; } }
 
 /** Service Section */
 #service_section {

@@ -12,7 +12,7 @@ $posts_per_page    = get_theme_mod( 'no_of_slides', 3 );
 $banner_newsletter = get_theme_mod( 'banner_newsletter' );
 
 if( $ed_banner == 'static_nl_banner' && has_custom_header() ){ ?>
-    <div id="banner_section" class="site-banner<?php if( has_header_video() ) echo esc_attr( ' video-banner' ); ?> parallax" data-parlx data-speed="0.5" data-height="600px">
+    <div id="banner_section" class="site-banner<?php if( has_header_video() ) echo esc_attr( ' video-banner' ); ?> parallax">
         <?php
         //the_custom_header_markup();
         if( blossom_coach_is_btnw_activated() && $banner_newsletter && has_shortcode( $banner_newsletter, 'BTEN' ) ){
